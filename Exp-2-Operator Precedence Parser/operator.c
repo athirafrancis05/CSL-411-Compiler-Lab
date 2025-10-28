@@ -20,6 +20,12 @@ void push(char c){ stack[++top]=c; }
 char pop(){ return stack[top--]; }
 char top_term(){ for(int i=top;i>=0;i--) if(strchr(syms,stack[i])) return stack[i]; return '$'; }
 
+void printStack(){
+    printf("Stack: ");
+    for(int i=0;i<=top;i++) printf("%c", stack[i]);
+    printf("\n");
+}
+
 void preprocess(char*in,char*out){
     int j=0; 
     for(int i=0;in[i];i++)
