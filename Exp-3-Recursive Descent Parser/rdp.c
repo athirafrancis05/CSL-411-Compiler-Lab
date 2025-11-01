@@ -20,16 +20,13 @@ for(j=i;j<=strlen(input);j++)
 {
 printf("%c",input[j]);
 }
-
-
 }
 void match(char c) {
     if (input[i] == c)
      {  ps(); 
-     i++;
+        i++;
         f=1;
-        }
-    
+        }    
 }
 void F() {
     if (input[i] == 'i')
