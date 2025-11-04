@@ -9,12 +9,17 @@ void yyerror(const char *s);
 %token NUMBER
 
 %%
+input:
+    expression '\n'   { printf("= %d\n", $1); }
+  ;
+
 expression:
-    expression '+' expression   { printf("%d\n", $1 + $3); }
-  | expression '-' expression   { printf("%d\n", $1 - $3); }
-  | expression '*' expression   { printf("%d\n", $1 * $3); }
-  | expression '/' expression   { printf("%d\n", $1 / $3); }
-  | NUMBER
+    expression '+' expression   { $$ = $1 + $3; }
+  | expression '-' expression   { $$ = $1 - $3; }
+  | expression '*' expression   { $$ = $1 * $3; }
+  | expression '/' expression   { $$ = $1 / $3; }
+  | '(' expression ')'          { $$ = $2; }
+  | NUMBER                      { $$ = $1; }
   ;
 %%
 void yyerror(const char *s) {
@@ -26,4 +31,3 @@ int main() {
     yyparse();
     return 0;
 }
-
